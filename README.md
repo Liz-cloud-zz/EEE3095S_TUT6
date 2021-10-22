@@ -1,11 +1,31 @@
-# EEE3095S_TUT6
-1. The Balena operating system (Linux with kernel integrated docker) is deployed on
-   devices running both a supervisor container and your application container(s)
-2. Once deployed a user is able to both monitor (via a web interface) and update one or
-   any or all deployed devices by rebuilding the application container and initiating an
-   update
-3. To view public device connect raspeberry pi zero to PC . RasPi must be connected to internet / WiFi to view message on server.
+## A Simple Server with Python Flask
+
+This is a simple skeleton Flask server project that works on any of the devices supported by [balena][balena-link].
+
+This project simply serves up `"Hello World!"` on port `:80` of your balena device.
+
+To get this project up and running, you will need to signup for a balena account [here][signup-page] and set up a device, have a look at our [Getting Started tutorial][gettingStarted-link]. Once you are set up with balena, you will need to clone this repo locally:
+```
+$ git clone git@github.com:balena-projects/simple-server-python.git
+```
+Then add your balena application's remote:
+```
+$ git remote add balena username@git.balena-cloud.com:username/myapp.git
+```
+and push the code to the newly added remote:
+```
+$ git push balena master
+```
+It should take a few minutes for the code to push. While you wait, lets enable device URLs so we can see the server outside of our local network. This option can be toggled on the device summary page, pictured below or in the `Actions` tab in your device dashboards.
+
+![Enable device URL](/img/enable-public-URLs.png)
+
+Once the device is updated, you should see this in your logs:
+![log output](/img/log-output.png)
+
+Then in your browser you should be able to open the device URL and see the message "Hello World!".
 
 
-
-# https://775c58b9e86236ca327a6dd4d0cf55c8.balena-devices.com/
+[balena-link]:https://balena.io/
+[signup-page]:https://dashboard.balena-cloud.com/signup
+[gettingStarted-link]:http://balena.io/docs/learn/getting-started/
